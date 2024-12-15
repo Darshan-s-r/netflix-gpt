@@ -1,20 +1,62 @@
 import React, {useState, useRef} from 'react'
 import Header from './Header'
+import validate from '../utils/ValidateEmailAndPassword'
+import UseSignIn from '../hooks/UseSignIn';
+import UseCreateUser from '../hooks/UseCreateUser';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import store from "../utils/AppStore"
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/UserSlice";
+import { auth } from '../utils/firebase';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const user = useSelector(store => store.user)
+  if(user){
+    navigate("/browse")
+  }
   const name = useRef();
   const email = useRef();
   const password = useRef();
+  const photoURL = useRef();
   const handlepageChange = (e)=>{
     e.preventDefault()
     setIsSignIn(!isSignIn)
   }
 
-  const handleSignUp = (e)=>{
+  const handleSignUp =async (e)=>{
       e.preventDefault()
-      console.log(email.current.value)
-      console.log(email)
+      if(isSignIn){
+        const validationError = validate(email.current.value, password.current.value)
+        setErrorMsg(validationError);
+        if(!validationError){
+          const error = await UseSignIn(email.current.value, password.current.value)
+          if(!error){
+            navigate("/browse")
+          }
+          setErrorMsg(error)
+      }
+    }
+      else{
+        const validationError = validate(email.current.value, password.current.value, name.current.value)
+        setErrorMsg(validationError);
+        if(!validationError){
+          const error = await UseCreateUser(email.current.value, password.current.value, name.current.value, photoURL.current.value)
+          if(!error){
+            const {uid, email, displayName, photoURL} = auth.currentUser
+            dispatch(addUser({uid, email, displayName, photoURL}));
+            navigate("/browse")
+          }
+          setErrorMsg(error)
+
+        }
+      }
+      
   }
   return (
     <div>
@@ -31,7 +73,12 @@ const Login = () => {
           }
           <input className='bg-gray-800 p-1 w-full block  mb-4' ref={email} type='text' placeholder='Email' ></input>
           <input className='bg-gray-800 p-1 w-full block  mb-4' ref={password} type='password' placeholder='password' ></input>
-          <button onClick={handleSignUp} className='bg-red-600 w-full px-3 py-2  mb-4'> {isSignIn ? 'Sign Up' : 'Sign In'}</button>
+          {
+            !isSignIn ? (<input className='bg-gray-800 p-1 w-full block  mb-4' ref={photoURL} type='text' placeholder='Photo URL' ></input>
+            ) : ''
+          }
+          <button onClick={handleSignUp} className='bg-red-600 rounded-md w-full px-3 py-2  mb-4'> {isSignIn ? 'Sign In' : 'Sign Up'}</button>
+          <p className='text-red-500'>{errorMsg}</p>
           <div className='flex'>
             <p>{isSignIn ? 'New to netflix' : 'Allready a user'}</p>
             <button onClick={handlepageChange} className='cursor-pointer pl-3'>{isSignIn ? 'Sign Up' : 'Sign In'}</button>
