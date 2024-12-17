@@ -3,7 +3,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux';
-import store from "../utils/AppStore"
+import store from "../reduxStore/AppStore"
 
 const Header = () => {
   const navigate = useNavigate();

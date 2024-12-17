@@ -1,13 +1,12 @@
 import React, {useState, useRef} from 'react'
 import Header from './Header'
 import validate from '../utils/ValidateEmailAndPassword'
-import UseSignIn from '../hooks/UseSignIn';
-import UseCreateUser from '../hooks/UseCreateUser';
+import UseSignIn from '../hooks/useSignIn';
+import UseCreateUser from '../hooks/useCreateUser';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import store from "../utils/AppStore"
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/UserSlice";
+import { addUser } from "../reduxStore/UserSlice";
 import { auth } from '../utils/firebase';
 
 const Login = () => {

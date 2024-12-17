@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react'
 import Header from './Header'
 import { useSelector } from 'react-redux';
-import store from "../utils/AppStore"
 import { useNavigate } from 'react-router-dom';
-
+import Trailer from './Trailer';
 
 export default function Browse() {
   const user = useSelector(store => store.user)
@@ -19,6 +18,7 @@ export default function Browse() {
   return (
     <div>
       <Header />
+      <Trailer />
     </div>
   )
 }
