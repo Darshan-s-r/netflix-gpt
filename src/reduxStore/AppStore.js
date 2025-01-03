@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './UserSlice'
-import nowPlayingMoviesReducer from './nowPlayingMoviesSlice'
-
+import moviesListReducer from './moviesListSlice'
 const store =  configureStore({
   reducer:{
       user : userReducer,
-      nowPlayingMovies : nowPlayingMoviesReducer,
+      moviesList : moviesListReducer,
   }
 }) 
 

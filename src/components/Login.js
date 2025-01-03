@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { addUser } from "../reduxStore/UserSlice";
 import { auth } from '../utils/firebase';
+import { netfilxBackGroungImg } from '../utils/constants';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -61,7 +62,7 @@ const Login = () => {
     <div>
       <Header />
       <div>
-        <img className='absolute' src='https://assets.nflxext.com/ffe/siteui/vlv3/729ce5c2-d831-436a-8c9d-f38fea0b99b3/web/IN-en-20241209-TRIFECTA-perspective_4aef76eb-7d5b-4be0-93c0-5f67320fd878_large.jpg' alt='backgroung-image'></img>
+        <img className='absolute h-screen w-screen ' src={netfilxBackGroungImg} alt='backgroung-image'></img>
       </div>
       <div className='mt-40 text-white absolute bg-black bg-opacity-80 w-4/12 mx-auto left-0 right-0'>
         <form className='p-10 flex-1'>

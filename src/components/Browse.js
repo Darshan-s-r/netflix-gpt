@@ -2,11 +2,16 @@ import React, {useEffect} from 'react'
 import Header from './Header'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Trailer from './Trailer';
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import PrimaryContainer from './PrimaryContainer';
+import SecondaryContainer from './SecondaryContainer';
+
 
 export default function Browse() {
   const user = useSelector(store => store.user)
   const navigate = useNavigate()
+
+  useNowPlayingMovies();
   
   useEffect(() => {
     if (!user) {
@@ -16,9 +21,10 @@ export default function Browse() {
 
   console.log("body")
   return (
-    <div>
+    <div className='bg-black text-white'>
       <Header />
-      <Trailer />
+      <PrimaryContainer />
+      <SecondaryContainer />
     </div>
   )
 }
