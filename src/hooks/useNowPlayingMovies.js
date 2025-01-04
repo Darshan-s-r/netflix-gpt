@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import {url_nowplaying, Api_options} from "../utils/constants"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../reduxStore/moviesListSlice";
 
 export default function useNowPlayingMovies () {
+  const nowPlayingMovies = useSelector(store => store.moviesList.nowPlayingMovies)
+
   const dispatch = useDispatch();
   useEffect(()=>{
       const fetchNowplayingMovies = async ()=>{
@@ -15,7 +17,10 @@ export default function useNowPlayingMovies () {
           console.log("now playing movies fetch error ", err)
         }
       }
-      fetchNowplayingMovies()
-  }, [dispatch])
+      if(!nowPlayingMovies || nowPlayingMovies.length === 0){
+        fetchNowplayingMovies()
+      }
+     
+  }, [dispatch, nowPlayingMovies])
     
 }

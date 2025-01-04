@@ -1,9 +1,10 @@
 import { url_trailerInfo, Api_options } from "../utils/constants"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMovieTrailer } from "../reduxStore/moviesListSlice";
 import { useEffect } from "react";
 
 export default function useMovieTrailer(movieId) {
+  const movieTrailer = useSelector(store => store.moviesList.movieTrailer)
 
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -20,9 +21,11 @@ export default function useMovieTrailer(movieId) {
           console.log("trailer fetch error ", err)
         }
       }
-      if(movieId){
-        fetchMovieTrailer()
-
+      if(!movieTrailer){
+        if(movieId){
+          fetchMovieTrailer()
+        }
       }
-  }, [dispatch, movieId])
+      
+  }, [dispatch, movieId, movieTrailer])
 }

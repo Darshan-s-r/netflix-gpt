@@ -62,7 +62,7 @@ const Login = () => {
     <div>
       <Header />
       <div>
-        <img className='absolute h-screen w-screen ' src={netfilxBackGroungImg} alt='backgroung-image'></img>
+        <img className='absolute top-0 bottom-0 object-cover h-screen w-screen ' src={netfilxBackGroungImg} alt='backgroung-image'></img>
       </div>
       <div className='mt-40 text-white absolute bg-black bg-opacity-80 w-4/12 mx-auto left-0 right-0'>
         <form className='p-10 flex-1'>

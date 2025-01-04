@@ -2,17 +2,27 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const UserSlice = createSlice({
   name: 'UserSlice',
-  initialState: null,
+  initialState: {
+    user:null,
+    language:'En',
+    browsePage : true,
+  },
   reducers:{
     addUser: (state, action)=>{
-      return action.payload;
+       state.user = action.payload;
     },
     removeUser:(state)=>{
-        return null;
+        state.user = null;
+    },
+    setLanguage: (state, action)=>{
+      state.language = action.payload;
+    },
+    setBrowsePage: (state, action)=>{
+      state.browsePage = action.payload;
     }
   }
 })
 
-export const {addUser, removeUser} = UserSlice.actions
+export const {addUser, removeUser, setLanguage, setBrowsePage} = UserSlice.actions
 
 export default UserSlice.reducer
