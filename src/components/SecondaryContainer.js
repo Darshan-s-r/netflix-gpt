@@ -13,7 +13,6 @@ export default function SecondaryContainer() {
         <MoviesList title="Popular" moviesList={popularMovies} />
         <MoviesList title="Top Rated" moviesList={topRatedMovies} />
         <MoviesList title="Up Coming" moviesList={upComingMovies} />
-
     </div>
   )
 }

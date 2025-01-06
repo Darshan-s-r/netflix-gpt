@@ -16,12 +16,12 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const user = useSelector(store => store.user)
+  const user = useSelector(store => store.user.user)
   if(user){
     navigate("/browse")
   }
   const name = useRef();
-  const email = useRef();
+  const email = useRef();  
   const password = useRef();
   const photoURL = useRef();
   const handlepageChange = (e)=>{
@@ -60,11 +60,11 @@ const Login = () => {
   }
   return (
     <div>
-      <Header />
+      <Header /> 
       <div>
         <img className='absolute top-0 bottom-0 object-cover h-screen w-screen ' src={netfilxBackGroungImg} alt='backgroung-image'></img>
       </div>
-      <div className='mt-40 text-white absolute bg-black bg-opacity-80 w-4/12 mx-auto left-0 right-0'>
+      <div className='mt-40 text-white absolute bg-black bg-opacity-80 md:w-6/12 lg:w-4/12 w-10/12 mx-auto left-0 right-0'>
         <form className='p-10 flex-1'>
           <h1 className='font-bold  mb-4'>{isSignIn ? 'Sign In' : 'Sign Up'}</h1>
           {

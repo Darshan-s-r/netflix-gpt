@@ -12,7 +12,7 @@ export default function PrimaryContainer() {
   return (
     <div className='-mt-10 md:-mt-20'>
     <Trailer movieId={id} />
-<AboutTrailer trailerInfo = {{original_title, overview}}/>
+    <AboutTrailer trailerInfo = {{original_title, overview}}/>
 </div>
   )
 }

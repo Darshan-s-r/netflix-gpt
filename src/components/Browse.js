@@ -11,7 +11,8 @@ import useUpComingMovies from '../hooks/useUpComingMovies';
 import GptPage from './GptPage';
 
 export default function Browse() {
-  const user = useSelector(store => store.user)
+  const user = useSelector(store => store.user.user)
+  const browsePage = useSelector(store => store.user.browsePage)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function Browse() {
     <div className='text-white bg-black'>
       <Header />
       {
-        user.browsePage ? 
+        browsePage ? 
         <>
         <PrimaryContainer />
         <SecondaryContainer />

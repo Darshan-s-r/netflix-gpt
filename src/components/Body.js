@@ -28,7 +28,7 @@ const Body = () => {
         dispatch(removeUser())
       }
     });
-  }, [])
+  }, [dispatch])
   return (
     <div>
       <RouterProvider router={appRouter}></RouterProvider>
