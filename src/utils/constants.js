@@ -6,6 +6,8 @@ export const url_trailerInfo = 'https://api.themoviedb.org/3/movie/'
 
 export const url_TMDB_CDN = 'https://image.tmdb.org/t/p/w500'
 
+export const url_TMDB_BACKDROP_CDN = 'https://image.tmdb.org/t/p/w1920_and_h800_multi_faces'
+
 export const url_popular = 'https://api.themoviedb.org/3/movie/popular'
 
 export const url_top_rated = 'https://api.themoviedb.org/3/movie/top_rated'
@@ -13,6 +15,12 @@ export const url_top_rated = 'https://api.themoviedb.org/3/movie/top_rated'
 export const url_upcoming = 'https://api.themoviedb.org/3/movie/upcoming'
 
 export const url_search_movies = 'https://api.themoviedb.org/3/search/movie?query='
+
+export const url_search_movie_with_id = 'https://api.themoviedb.org/3/movie/'
+
+export const url_video_thumnail = "https://i.ytimg.com/vi/"
+
+export const url_play_button = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg"
 
 const tmdb_key = process.env.REACT_APP_TMDB_ACCESS_TOKEN
 

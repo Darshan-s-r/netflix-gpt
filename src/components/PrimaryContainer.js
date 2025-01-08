@@ -10,7 +10,7 @@ export default function PrimaryContainer() {
   }
   const {id, original_title, overview} = nowPlayingMovies[0]
   return (
-    <div className='-mt-10 md:-mt-20'>
+    <div className='md:-mt-20'>
     <Trailer movieId={id} />
     <AboutTrailer trailerInfo = {{original_title, overview}}/>
 </div>

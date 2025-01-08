@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import Header from './Header'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import PrimaryContainer from './PrimaryContainer';
 import SecondaryContainer from './SecondaryContainer';
@@ -37,7 +37,7 @@ export default function Browse() {
         </>
         : <GptPage />
       }
-      
+      <Outlet />
     </div>
   )
 }

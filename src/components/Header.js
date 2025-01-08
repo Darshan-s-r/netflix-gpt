@@ -1,12 +1,14 @@
 import React from 'react'
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setLanguage, setBrowsePage } from '../reduxStore/UserSlice';
 import { language_supported } from '../utils/constants';
 const Header = () => {
+  const location = useLocation()
+  console.log("location", location)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(store => store.user.user)
@@ -36,10 +38,13 @@ const Header = () => {
           <div className='mt-6 h-8 md:h-12 mx-3 ml-auto mr-9 flex'>
           <select onChange={handleLangusgeChange} className='bg-black border border-amber-200 px-2 rounded-md' id="language">
             {
-                language_supported.map(language =>  <option value={language.identifier}>{language.name}</option>)
+                language_supported.map(language =>  <option key={language.identifier} value={language.identifier}>{language.name}</option>)
             }
           </select>
-          <button onClick={handlePageChange} className='bg-purple-950 px-2 rounded-md mx-3'>{browsePage ? 'GPT search' : 'Home page'}</button>
+          {
+            location.pathname === "/browse" &&           <button onClick={handlePageChange} className='bg-purple-950 px-2 rounded-md mx-3'>{browsePage ? 'GPT search' : 'Home page'}</button>
+
+          }
           <img className='md:w-12 md:h-12 w-8 h-8 rounded-full' src={user.photoURL} alt='profile'></img>
         <button onClick={handleSignOut} className='px-2 mx-3 text-2xl rounded-md bg-red-500'>X</button>
         </div>

@@ -33,26 +33,10 @@
 - TMDB image CDN URL
 - style the browse page
 - usePopularMovies custom hook
+- GPT api
+- fetch movies given by GPT api
+- on click movie card take to specific movie section
+- impliment /browse/movies/ page
+- info on specific movie with background photo and poster
+- playable videos related to specific movies 
 
-
-
-# Features
-
--LogIN/ sign up
-  -sign in/sign up form
-  -redirect to browse page
-
--Browse (after authentication)
-    - Header
-    - Main movie
-      - Tailer in background
-      - Title & description
-      - movie Suggestion
-        - MovieList * n (vertically scroll)  
- 
-- Netflix GPT
-  - search Bar
-  - Movie Suggestions
-
-
-2:50:30

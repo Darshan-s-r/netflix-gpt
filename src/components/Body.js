@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../reduxStore/UserSlice";
+import MovieDetail from './MovieDetail';
 
 const Body = () => {
     const dispatch = useDispatch();
@@ -16,8 +17,14 @@ const Body = () => {
     },
     {
       path:"/browse",
-      element:<Browse />
-    }
+      element:<Browse />,
+    },
+    {
+      path:"/browse/movie/:movieId",
+      element:<MovieDetail />
+    },
+ 
+   
   ])
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {

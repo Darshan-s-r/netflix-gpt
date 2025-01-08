@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Header from './Header'
 import validate from '../utils/ValidateEmailAndPassword'
 import UseSignIn from '../hooks/useSignIn';
@@ -17,9 +17,7 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const user = useSelector(store => store.user.user)
-  if(user){
-    navigate("/browse")
-  }
+
   const name = useRef();
   const email = useRef();  
   const password = useRef();
@@ -37,6 +35,8 @@ const Login = () => {
         if(!validationError){
           const error = await UseSignIn(email.current.value, password.current.value)
           if(!error){
+            email.current.value = "";
+            password.current.value = "";
             navigate("/browse")
           }
           setErrorMsg(error)
@@ -50,14 +50,24 @@ const Login = () => {
           if(!error){
             const {uid, email, displayName, photoURL} = auth.currentUser
             dispatch(addUser({uid, email, displayName, photoURL}));
+            name.current.value = ""
+            email.current.value = "";
+            password.current.value = "";
+            photoURL.current.value = ""
             navigate("/browse")
           }
           setErrorMsg(error)
 
         }
       }
+
       
   }
+  useEffect(() => {
+    if (user) {
+      navigate("/browse");
+    }
+  }, [user, navigate]);
   return (
     <div>
       <Header /> 
