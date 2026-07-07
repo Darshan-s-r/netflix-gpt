@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import Header from './Header'
 import validate from '../utils/ValidateEmailAndPassword'
-import UseSignIn from '../hooks/useSignIn';
+import useSignIn from '../hooks/useSignIn';
 import UseCreateUser from '../hooks/useCreateUser';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -33,7 +33,7 @@ const Login = () => {
         const validationError = validate(email.current.value, password.current.value)
         setErrorMsg(validationError);
         if(!validationError){
-          const error = await UseSignIn(email.current.value, password.current.value)
+          const error = await useSignIn(email.current.value, password.current.value)
           if(!error){
             email.current.value = "";
             password.current.value = "";

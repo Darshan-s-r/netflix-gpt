@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
-export default async function UseSignIn(email, password) {
+export default async function useSignIn(email, password) {
 
  try{
   await signInWithEmailAndPassword(auth, email, password)
