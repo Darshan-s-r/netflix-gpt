@@ -21,13 +21,12 @@ export default function GptSearch() {
           { role:"system", content: "" },
           { role:"user", content:  `${gptQuery} + ${inputValue}`}
         ],
-        model: "gpt-4o",
+        model: "openai/gpt-oss-120b",
         temperature: 1,
         max_tokens: 4096,
         top_p: 1
       });
       const movieNames = response.choices[0].message.content.split(", ")
-      console.log(movieNames)
       const data = movieNames.map(async(name) => {
         const res = await fetch(url_search_movies + name + '&page=1', Api_options)
         if(!res.ok){
@@ -36,8 +35,6 @@ export default function GptSearch() {
         return res.json()
     })
       const result = await Promise.all(data)
-      console.log("data",data);
-      console.log("result", result)
       dispatch(addNames(movieNames))
       dispatch(addMovies(result));
     }catch(err){

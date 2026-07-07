@@ -17,8 +17,6 @@ export default function useMovieVideos(id) {
           const trailer = videos.filter(video=>video.type === "Trailer")
           const teaser = videos.filter(video=>video.type === "Teaser")
           const others = videos.filter(video=>video.type !== "Trailer" && video.type !== "Teaser")
-          console.log("trailer",trailer)
-          console.log("others", others)
           dispatch(setMovieVideos({id:videosInfo.id, trailer:trailer, teaser:teaser, others:others}))
         }catch(err){
           console.log("movie videos fetch error ", err)

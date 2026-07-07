@@ -8,7 +8,6 @@ import { setLanguage, setBrowsePage } from '../reduxStore/UserSlice';
 import { language_supported } from '../utils/constants';
 const Header = () => {
   const location = useLocation()
-  console.log("location", location)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(store => store.user.user)

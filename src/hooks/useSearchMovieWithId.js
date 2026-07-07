@@ -10,7 +10,6 @@ export default function useSearchMovieWithId(id) {
       try{
           const res = await fetch(url_search_movie_with_id + id, Api_options);
           const data = await res.json()
-          console.log("movie info",data)
           dispatch(setMovieInfo(data))
       }catch(err){
         console.log("fetch movie info error,", err);

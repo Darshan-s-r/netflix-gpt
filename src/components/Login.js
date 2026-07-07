@@ -50,7 +50,7 @@ const Login = () => {
           if(!error){
             const {uid, email, displayName, photoURL} = auth.currentUser
             dispatch(addUser({uid, email, displayName, photoURL}));
-            name.current.value = ""
+            name.current.value = "";
             email.current.value = "";
             password.current.value = "";
             photoURL.current.value = ""
